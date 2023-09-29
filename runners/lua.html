@@ -1,4 +1,13 @@
-     var script = document.createElement("script")
+<script>
+    window.addEventListener("message", function (e) {
+        if (e.origin !== "https://super-diamond-drive.github.io") {
+            return
+        }
+         
+        const data = e.data
+     var script = parent.contentWindow.parent.document.createElement("script")
      script.type = "application/lua"
      script.innerHTML = code
-     App.appendChild(script)
+     parent.contentWindow.parent.document.body.appendChild(script)
+    })
+</script>
