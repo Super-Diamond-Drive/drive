@@ -12,6 +12,9 @@
         if(type == "JS") {
          parent.contentWindow.parent.eval("newJSApp(" + code + ", " + title + ")")
         }
+        if(type == "Lua") {
+         parent.contentWindow.parent.eval("newLuaApp(" + code + ", " + title + ")")
+        }
     })
 
     function importAppConfig(script) {
