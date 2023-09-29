@@ -1,0 +1,12 @@
+<html><head></head>
+<body>
+<script>
+for(var i=0, len=localStorage.length; i<len; i++) {
+    var key = localStorage.key(i);
+    var value = localStorage[key];
+    var fileItem = document.createElement("p")
+    fileItem.innerHTML = key + " <button src='parent.openFile(" + key + ")'>Open</button> <button src='parent.deleteFile(" + key + ")'>Delete</button> <button src='parent.runFile(" + key + ", prompt('Enter the file type to run this file as'))'>Run</button>"
+}
+</script>
+</body>
+</html>
