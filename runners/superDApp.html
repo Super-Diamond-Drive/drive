@@ -1,0 +1,22 @@
+<script>
+    window.addEventListener("message", function (e) {
+        if (e.origin !== "https://super-diamond-drive.github.io") {
+            return
+        }
+         
+        const data = e.data
+        importAppConfig(data)
+        if(type == "iframe") {
+         parent.contentWindow.parent.eval("newIframeApp(" + url + ", " + title + ")")
+        }
+        if(type == "JS") {
+         parent.contentWindow.parent.eval("newJSApp(" + code + ", " + title + ")")
+        }
+    })
+
+    function importAppConfig(script) {
+     var scriptelem = document.createElement("script")
+     scriptelem.innerHTML = script
+     document.body.appendChild(scriptelem)
+    }
+</script>
