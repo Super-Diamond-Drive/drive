@@ -33,7 +33,7 @@
  }
  function runFile(fileName, runnerType) {
   var runframe = document.createElement("iframe")
-  runframe.src = "runners/" + runnerType + ".html"
+  runframe.src = "super-diamond-drive.github.io/drive/runners/" + runnerType + ".html"
   runframe.style.display = "none"
   document.body.appendChild(runframe)
   runframe.contentWindow.postMessage(localStorage.getItem(fileName), "*")
