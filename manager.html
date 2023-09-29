@@ -1,13 +1,38 @@
+<html>
+<head>
+</head>
+<body>
+<div id="home">
 <center><h1>Welcome to The Super Diamond Drive Manager</h1></center>
-<button onclick="openFile(prompt('Enter File Name'))">Open File</button>
-<button onclick="runFile(prompt('Enter File Name'), prompt('As what file type would you like to run the file'))">Run File</button>
-<button onclick="deleteFile(prompt('Enter File Name'))">Delete File</button>
+<button onclick="openFile(prompt('Enter File Name of file you would like to view or edit'))">Open File</button>
+<button onclick="runFile(prompt('Enter File Name of file you would like to run'), prompt('As what file type would you like to run the file'))">Run File</button>
+<button onclick="deleteFile(prompt('Enter File Name of file you would like to delete'))">Delete File</button>
+</div>
 <script>
  function openFile(fileName) {
-  
+  document.getElementById("fileOpened").style.display = "block"
+  document.getElementById("home").style.display = "none"
+  document.getElementById("fileDataInput").value = localStorage.getItem(fileName)
+ }
+ function saveFile(fileName) {
+  localStorage.setItem(fileName, document.getElementById("fileDataInput").value)
+  document.getElementById("fileOpened").style.display = "none"
+  document.getElementById("home").style.display = "block"
+ }
+ function deleteFile(fileName) {
+  localStorage.removeItem(fileName)
+ }
+ function runFile(fileName, runnerType) {
+  var runframe = document.createElement("iframe")
+  runframe.src = "runners/" + runnerType + ".html"
+  runframe.style.display = "none"
+  document.body.appendChild(runframe)
+  runframe.contentWindow.postMessage(localStorage.getItem(fileName), "*")
  }
 </script>
-<div id="fileOpened">
-<button>Save As</button>
-<textarea rows="300" cols="400"></textarea>
+<div id="fileOpened" style="display: none">
+<button onclick="saveFile(prompt('Enter File Name. you may be copying it or editing and making a new file. enter a exsisting file name to overwrite it'))">Save As</button>
+<textarea id="fileDataInput" rows="300" cols="400"></textarea>
 </div>
+</body>
+</html>
