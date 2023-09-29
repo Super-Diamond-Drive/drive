@@ -4,11 +4,15 @@
 <body>
 <div id="home">
 <center><h1>Welcome to The Super Diamond Drive Manager</h1></center>
+<p><a onclick="Open('https://github.com/Super-Diamond-Drive/templates/tree/main')">Templates</a> <a onclick="Open('https://github.com/Super-Diamond-Drive/drive/tree/main/runners')">Runners</a></p>
 <button onclick="openFile(prompt('Enter File Name of file you would like to view or edit'))">Open File</button>
 <button onclick="runFile(prompt('Enter File Name of file you would like to run'), prompt('As what file type would you like to run the file'))">Run File</button>
 <button onclick="deleteFile(prompt('Enter File Name of file you would like to delete'))">Delete File</button>
 </div>
 <script>
+ function Open(url) {
+  return open(url);
+ }
  function openFile(fileName) {
   document.getElementById("fileOpened").style.display = "block"
   document.getElementById("home").style.display = "none"
