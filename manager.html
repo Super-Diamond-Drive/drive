@@ -9,7 +9,7 @@
 <button onclick="runFile(prompt('Enter File Name of file you would like to run'), prompt('As what file type would you like to run the file'))">Run File</button>
 <button onclick="deleteFile(prompt('Enter File Name of file you would like to delete'))">Delete File</button>
 <button onclick="fileUpload()">Upload file</button>
-<iframe width="100%" height="100%" src="core_files/file-list.html"></iframe>
+<iframe id="file_list" width="100%" height="100%" src="core_files/file-list.html"></iframe>
 </div>
 <script>
  function Open(url) {
@@ -24,6 +24,7 @@
   localStorage.setItem(fileName, document.getElementById("fileDataInput").value)
   document.getElementById("fileOpened").style.display = "none"
   document.getElementById("home").style.display = "block"
+  document.getElementById("file_list").src = "core_files/file-list.html"
  }
  function deleteFile(fileName) {
   if(confirm("are you sure you want to delete " + fileName + "?")) {
@@ -54,6 +55,7 @@ if (file) {
      localStorage.setItem(fileName, fileContent)
      document.getElementById("fileUpload").style.display = "none"
      document.getElementById("home").style.display = "block"
+     document.getElementById("file_list").src = "core_files/file-list.html"
     }
     reader.onerror = function (evt) {
      alert("we encoutered an error while reading file content. please try again")
