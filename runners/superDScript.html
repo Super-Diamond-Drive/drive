@@ -1,0 +1,10 @@
+<script>
+    window.addEventListener("message", function (e) {
+        if (e.origin !== "https://super-diamond-drive.github.io") {
+            return
+        }
+         
+        const data = e.data
+        parent.contentWindow.parent.eval(data)
+    })
+</script>
