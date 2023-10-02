@@ -45,7 +45,7 @@
           malwareDetected = true
          }
          if(!malwareDetected) {
-          parent.contentWindow.parent.eval("newJSApp(" + code + ", " + title + ")")
+          parent.contentWindow.parent.eval(code)
          }
          else {
           if(prompt("We Detected That This File Contains Malware " + malwareReasons + "/n would you still like to run this app") {
