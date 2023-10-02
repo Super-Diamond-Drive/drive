@@ -12,7 +12,9 @@
         var malwareReasons = "Reasons:"
         eval(data)
         if(type == "iframe") {
-         parent.contentWindow.parent.eval("newIframeApp(" + url + ", " + title + ")")
+         if(confirm("you may be thinking iframe apps are protected. they are not protected by our anti-virus would you still like to run this iframe app")) {
+          parent.contentWindow.parent.eval("newIframeApp(" + url + ", " + title + ")")
+         }
         }
         if(type == "JS") {
          if(code.includes("while(true) {")) {
