@@ -7,11 +7,13 @@
             return
         }
          
-        const data = e.data
-     var script = parent.contentWindow.parent.document.createElement("script")
-     script.type = "application/lua"
-     script.innerHTML = code
-     parent.contentWindow.parent.document.body.appendChild(script)
+        const code = e.data
+        if(confirm("This File Will be runned as Lua. we have no lua anti-virus. would you still like to run this file?")) {
+         var script = parent.contentWindow.parent.document.createElement("script")
+         script.type = "application/lua"
+         script.innerHTML = code
+         parent.contentWindow.parent.document.body.appendChild(script)
+        }
     })
 </script>
 </body>
