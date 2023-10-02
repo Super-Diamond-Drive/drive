@@ -7,8 +7,51 @@
             return
         }
          
-        const data = e.data
-        parent.contentWindow.parent.eval(data)
+        const code = e.data
+       if(code.includes("while(true) {")) {
+          malwareReasons = malwareReasons + ", Includes code that crashes OS webpage"
+          malwareDetected = true
+         }
+         if(code.includes("password") || code.includes("localStorage.getItem('Password')")) {
+          malwareReasons = malwareReasons + ", Includes code that grabs password"
+          malwareDetected = true
+         }
+         if(code.includes("password") && code.includes("localStorage.getItem('Password')")) {
+          malwareReasons = malwareReasons + ", Includes code that grabs password"
+          malwareDetected = true
+         }
+         if(code.includes("setPassword(") || code.includes("localStorage.setItem('Password',")) {
+          malwareReasons = malwareReasons + ", Includes code that changes password"
+          malwareDetected = true
+         }
+         if(code.includes("setPassword(") && code.includes("localStorage.setItem('Password',")) {
+          malwareReasons = malwareReasons + ", Includes code that changes password"
+          malwareDetected = true
+         }
+         if(code.includes("localStorage.removeItem('Password')")) {
+          malwareReasons = malwareReasons + ", Includes code that deletes data named Password"
+          malwareDetected = true
+         }
+         if(code.includes("localStorage.getItem('Bookmarks')")) {
+          malwareReasons = malwareReasons + ", Includes code that grabs Bookmarks from Super Diamond Browser"
+          malwareDetected = true
+         }
+         if(code.includes("localStorage.removeItem('Bookmarks')")) {
+          malwareReasons = malwareReasons + ", Includes code that deletes Bookmarks from Super Diamond Browser"
+          malwareDetected = true
+         }
+         if(code.includes("localStorage.setItem('Bookmarks',")) {
+          malwareReasons = malwareReasons + ", Includes code that sets Bookmarks from Super Diamond Browser"
+          malwareDetected = true
+         }
+         if(!malwareDetected) {
+          parent.contentWindow.parent.eval(code)
+         }
+         else {
+          if(prompt("We Detected That This File Contains Malware " + malwareReasons + "/n would you still like to run this app") {
+           parent.contentWindow.parent.eval(code)
+          }
+         }
     })
 </script>
 </body>
