@@ -61,7 +61,7 @@
          }
         }
         if(type == "Lua") {
-         if(prompt("we have no Lua Protection. Be careful. would you still like to run this app")) {
+         if(confirm("we have no Lua Protection. Be careful. would you still like to run this app")) {
           parent.contentWindow.parent.eval("newLuaApp(" + code + ", " + title + ")")
          }
         }
