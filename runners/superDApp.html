@@ -61,6 +61,7 @@
            parent.contentWindow.parent.eval("newJSApp(" + code + ", " + title + ")")
           }
          }
+        }
         if(type == "Lua") {
          if(confirm("we have no Lua Protection. Be careful. would you still like to run this app")) {
           parent.contentWindow.parent.eval("newLuaApp(" + code + ", " + title + ")")
