@@ -1,0 +1,17 @@
+<html>
+<head></head>
+<body>
+<script>
+    window.addEventListener("message", function (e) {
+        if (e.origin !== "https://super-diamond-drive.github.io") {
+            return
+        }
+         
+        const data = e.data
+        eval(data)
+        parent.contentWindow.parent.eval("localStorage.setItem('background', " + background + ")")
+        parent.contentWindow.parent.eval("localStorage.setItem('backgroundIsImage', " + backgroundIsImage + ")")
+    })
+</script>
+</body>
+</html>
