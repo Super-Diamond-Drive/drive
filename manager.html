@@ -9,9 +9,29 @@
 <button onclick="runFile(prompt('Enter File Name of file you would like to run'), prompt('As what file type would you like to run the file'))">Run File</button>
 <button onclick="deleteFile(prompt('Enter File Name of file you would like to delete'))">Delete File</button>
 <button onclick="fileUpload()">Upload file</button>
+<button onclick="downloadFile(prompt('Enter File Name'))">Download</button>
 <iframe id="file_list" width="100%" height="100%" src="core_files/file-list.html"></iframe>
 </div>
 <script>
+function donwloadFile(name) {
+ var content = localStorage.getItem(name)
+ download(name, content)
+}
+function download(filename, text) {
+    var pom = document.createElement('a');
+    pom.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+    pom.setAttribute('download', filename);
+
+    if (document.createEvent) {
+        var event = document.createEvent('MouseEvents');
+        event.initEvent('click', true, true);
+        pom.dispatchEvent(event);
+    }
+    else {
+        pom.click();
+    }
+}
+
  function Open(url) {
   return open(url);
  }
