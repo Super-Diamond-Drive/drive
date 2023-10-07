@@ -8,9 +8,9 @@
         }
          
         const blob = e.data
-        var blobURL = window.URL.createObjectURL(blob);
-        var audioVar = new Audio(blobURL);
-        audioVar.play();
+var binaryData = [];
+binaryData.push(blob);
+window.URL.createObjectURL(new Blob(binaryData, {type: "audio/mpeg"}))
     })
 </script>
 </body>
