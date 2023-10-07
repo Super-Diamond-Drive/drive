@@ -11,7 +11,8 @@
 var binaryData = [];
 binaryData.push(blob);
 var url = window.URL.createObjectURL(new Blob(binaryData, {type: "audio/mpeg"}))
-var audioObj = new Audio(url);
+var audioObj = new Audio();
+audioObj.src = url;
 audioObj.play();
     })
 </script>
