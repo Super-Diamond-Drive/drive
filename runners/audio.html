@@ -10,7 +10,9 @@
         const blob = e.data
 var binaryData = [];
 binaryData.push(blob);
-window.URL.createObjectURL(new Blob(binaryData, {type: "audio/mp3"}))
+var url = window.URL.createObjectURL(new Blob(binaryData, {type: "audio/mp3"}))
+var audioObj = new Audio(url);
+audioObj.play();
     })
 </script>
 </body>
