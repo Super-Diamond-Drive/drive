@@ -18,7 +18,7 @@ function openSoftware(name) {
  location.replace("software/" + name + ".html")
 }
 
-function donwloadFile(name) {
+function downloadFile(name) {
  var content = localStorage.getItem(name)
  download(name, content)
 }
@@ -94,7 +94,7 @@ if (file) {
 </div>
 <div id="fileUpload" style="display: none">
 <p><input id="fileForUpload" type="file"></input></p>
-<p><button onclick="addFileFromUpload">Upload File</button></p>
+<p><button onclick="addFileFromUpload()">Upload File</button></p>
 </div>
 </body>
 </html>
