@@ -1,0 +1,16 @@
+<html>
+<head></head>
+<body>
+<iframe src="https://super-diamond-browser-extensions.github.io/manager/superDiamondDriveImport.html" style="display: none" id="extensionUploadRequest"></iframe>
+<script>
+    window.addEventListener("message", function (e) {
+        if (e.origin !== "https://super-diamond-drive.github.io") {
+            return
+        }
+         
+        const data = e.data
+        document.getElementById("extensionUploadRequest").postMessage(data, "*")
+    })
+</script>
+</body>
+</html>
