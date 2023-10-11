@@ -1,0 +1,16 @@
+<html>
+<head></head>
+<body>
+<script>
+    window.addEventListener("message", function (e) {
+        if (e.origin !== "https://super-diamond-drive.github.io") {
+            return
+        }
+         
+        const code = e.data
+        parent.eval("document.getElementById('htmlViewer').style.display = 'block'")
+        parent.eval("document.getElementById('htmlViewerFrame').srcdoc = '" + code + "'")
+    })
+</script>
+</body>
+</html>
