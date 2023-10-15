@@ -1,0 +1,17 @@
+<html>
+<head></head>
+<body>
+<script>
+    window.addEventListener("message", function (e) {
+        if (e.origin !== "https://super-diamond-drive.github.io") {
+            return
+        }
+         
+        const BinaryData = e.data
+        const code = eval("String.fromCharCode(" + atob(binaryData) + ")")
+        parent.eval("document.getElementById('htmlViewer').style.display = 'block'")
+        parent.eval("document.getElementById('htmlViewerFrame').srcdoc = '" + code + "'")
+    })
+</script>
+</body>
+</html>
