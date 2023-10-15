@@ -1,0 +1,13 @@
+<script>
+    window.addEventListener("message", function (e) {
+        if (parent.location.href !== "https://alexidians.github.io/Super-Diamond-OS/settings.html") {
+            return
+        }
+        if (e.origin !== "https://alexidians.github.io") {
+            return
+        }
+        var discContent = e.data
+        var disc = eval("String.fromCharCode(" + discContent + ")")
+        
+    })
+</script>
