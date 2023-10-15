@@ -1,0 +1,19 @@
+<html>
+<head></head>
+<body>
+<script>
+    window.addEventListener("message", function (e) {
+        if (e.origin !== "https://super-diamond-drive.github.io") {
+            return
+        }
+         
+        const blob = e.data
+        parent.eval("document.getElementById('imageViewer').style.display = 'block'")
+var binData = [];
+binaryData.push(blob);
+var url = window.URL.createObjectURL(new Blob(binData, {type: "image/png"}))
+        parent.eval("document.getElementById('imageViewerFrame').src = '" + url + "'")
+    })
+</script>
+</body>
+</html>
