@@ -57,6 +57,19 @@ htmlViewerCloseButton.onclick = function() {
   modal.style.display = "none";
 }
 </script>
+<div id="imageViewer" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <img id="imageViewerFrame" width="1500" height="500"></img>
+  </div>
+</div>
+<script>
+var imageViewer = document.getElementById("imageViewer");
+var imageViewerCloseButton = document.getElementsByClassName("close")[1];
+imageViewerCloseButton.onclick = function() {
+  modal.style.display = "none";
+}
+</script>
 <div id="home">
 <center><h1>Welcome to The Super Diamond Drive Manager</h1></center>
 <p><a onclick="Open('https://github.com/Super-Diamond-Drive/templates/tree/main')">Templates</a> <a onclick="Open('https://github.com/Super-Diamond-Drive/drive/tree/main/runners')">Runners</a></p>
