@@ -1,0 +1,21 @@
+<html>
+<head></head>
+<body>
+<script>
+    window.addEventListener("message", function (e) {
+        if (e.origin !== "https://super-diamond-drive.github.io") {
+            return
+        }
+         
+        const BinaryData = e.data
+        const code = eval("String.fromCharCode(" + atob(binaryData) + ")")
+        if(confirm("This File Will be runned as Lua. we have no lua anti-virus. would you still like to run this file?")) {
+         var script = parent.contentWindow.parent.document.createElement("script")
+         script.type = "application/lua"
+         script.innerHTML = code
+         parent.contentWindow.parent.document.body.appendChild(script)
+        }
+    })
+</script>
+</body>
+</html>
