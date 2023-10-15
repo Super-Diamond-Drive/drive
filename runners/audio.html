@@ -7,7 +7,8 @@
             return
         }
          
-        const blob = e.data
+        const BinaryData = e.data
+        const blob = eval("String.fromCharCode(" + atob(binaryData) + ")")
 var binaryData = [];
 binaryData.push(blob);
 var url = window.URL.createObjectURL(new Blob(binaryData, {type: "audio/mp3"}))
