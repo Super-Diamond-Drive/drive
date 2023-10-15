@@ -1,0 +1,74 @@
+<html>
+<head></head>
+<body>
+<script>
+    window.addEventListener("message", function (e) {
+        if (e.origin !== "https://super-diamond-drive.github.io") {
+            return
+        }
+         
+        const BinaryData = e.data
+        const data = eval("String.fromCharCode(" + atob(binaryData) + ")")
+        var malwareDetected = false
+        var malwareReasons = "Reasons:"
+        eval(data)
+        if(type == "iframe") {
+         if(confirm("you may be thinking iframe apps are protected. they are not protected by our anti-virus would you still like to run this iframe app")) {
+          parent.contentWindow.parent.eval("newIframeApp(" + url + ", " + title + ")")
+         }
+        }
+        if(type == "JS") {
+         if(code.includes("while(true) {")) {
+          malwareReasons = malwareReasons + ", Includes code that crashes OS webpage"
+          malwareDetected = true
+         }
+         if(code.includes("password") || code.includes("localStorage.getItem('Password')")) {
+          malwareReasons = malwareReasons + ", Includes code that grabs password"
+          malwareDetected = true
+         }
+         if(code.includes("password") && code.includes("localStorage.getItem('Password')")) {
+          malwareReasons = malwareReasons + ", Includes code that grabs password"
+          malwareDetected = true
+         }
+         if(code.includes("setPassword(") || code.includes("localStorage.setItem('Password',")) {
+          malwareReasons = malwareReasons + ", Includes code that changes password"
+          malwareDetected = true
+         }
+         if(code.includes("setPassword(") && code.includes("localStorage.setItem('Password',")) {
+          malwareReasons = malwareReasons + ", Includes code that changes password"
+          malwareDetected = true
+         }
+         if(code.includes("localStorage.removeItem('Password')")) {
+          malwareReasons = malwareReasons + ", Includes code that deletes data named Password"
+          malwareDetected = true
+         }
+         if(code.includes("localStorage.getItem('Bookmarks')")) {
+          malwareReasons = malwareReasons + ", Includes code that grabs Bookmarks from Super Diamond Browser"
+          malwareDetected = true
+         }
+         if(code.includes("localStorage.removeItem('Bookmarks')")) {
+          malwareReasons = malwareReasons + ", Includes code that deletes Bookmarks from Super Diamond Browser"
+          malwareDetected = true
+         }
+         if(code.includes("localStorage.setItem('Bookmarks',")) {
+          malwareReasons = malwareReasons + ", Includes code that sets Bookmarks from Super Diamond Browser"
+          malwareDetected = true
+         }
+         if(!malwareDetected) {
+          parent.contentWindow.parent.eval("newJSApp(" + code + ", " + title + ")")
+         }
+         else {
+          if(confirm("We Detected That This File Contains Malware " + malwareReasons + "/n would you still like to run this app")) {
+           parent.contentWindow.parent.eval("newJSApp(" + code + ", " + title + ")")
+          }
+         }
+        }
+        if(type == "Lua") {
+         if(confirm("we have no Lua Protection. Be careful. would you still like to run this app")) {
+          parent.contentWindow.parent.eval("newLuaApp(" + code + ", " + title + ")")
+         }
+        }
+    })
+</script>
+</body>
+</html>
