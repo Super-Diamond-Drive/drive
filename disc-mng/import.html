@@ -1,0 +1,58 @@
+<html>
+<head></head>
+<body>
+<input id="fileReq" type="file" allow=".SuperDiamondDisc"></input>
+<script>
+    window.addEventListener("message", function (e) {
+        if (e.origin !== "https://super-diamond-drive.github.io") {
+            return
+        }
+        document.getElementById("fileReq").click()
+        setTimeout(function() {
+         alert("Click Ok when file Chosen")
+         step2()
+        }, 0.3)
+    })
+
+function step2() {
+var file = document.getElementById("fileReq").files[0];
+var fileContent = "reading..."
+var fileName = file.name;
+if (file) {
+    var reader = new FileReader();
+    reader.readAsText(file, "UTF-8");
+    reader.onload = function (evt) {
+     localStorage.clear()
+     fileContent = evt.target.result;
+     var Disc = eval("String.fromCharCode(" + atob(fileContent) + ")")
+     localStorage.setItem(fileName, fileContent)
+     for (let i = ; i < Disc.split("<Ϩ>>").length; i++) {
+      var DiscFile = Disc.split("<Ϩ>>")[i]
+      localStorage.setItem(DiscFile.split("<<Ϩ>")[0], DiscFile.split("<<Ϩ>")[1])
+     }
+     parent.location.replace(parent.location.href)
+     alert("Succesfully Imported Disc.")
+    }
+    reader.onerror = function (evt) {
+     alert("we encoutered an error while reading Disc content. please try again")
+    }
+}
+}
+
+function download(filename, text) {
+    var pom = document.createElement('a');
+    pom.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+    pom.setAttribute('download', filename);
+
+    if (document.createEvent) {
+        var event = document.createEvent('MouseEvents');
+        event.initEvent('click', true, true);
+        pom.dispatchEvent(event);
+    }
+    else {
+        pom.click();
+    }
+}
+</script>
+</body>
+</html>
