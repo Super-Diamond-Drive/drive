@@ -2,19 +2,9 @@
 <head></head>
 <body>
 <input id="fileReq" type="file" allow=".SuperDiamondDisc"></input>
+<button onclick="import()">Import</button>
 <script>
-    window.addEventListener("message", function (e) {
-        if (e.origin !== "https://super-diamond-drive.github.io") {
-            return
-        }
-        document.getElementById("fileReq").click()
-        setTimeout(function() {
-         alert("Click Ok when file Chosen")
-         step2()
-        }, 0.3)
-    })
-
-function step2() {
+function import() {
 var file = document.getElementById("fileReq").files[0];
 var fileContent = "reading..."
 var fileName = file.name;
