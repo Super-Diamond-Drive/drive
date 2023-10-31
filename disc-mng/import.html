@@ -2,9 +2,9 @@
 <head></head>
 <body>
 <input id="fileReq" type="file" allow=".SuperDiamondDisc"></input>
-<button onclick="import()">Import</button>
+<button onclick="importDisc()">Import</button>
 <script>
-function import() {
+function importDisc() {
 var file = document.getElementById("fileReq").files[0];
 var fileContent = "reading..."
 var fileName = file.name;
