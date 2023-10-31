@@ -26,7 +26,7 @@ if (file) {
      fileContent = evt.target.result;
      var Disc = eval("String.fromCharCode(" + atob(fileContent) + ")")
      localStorage.setItem(fileName, fileContent)
-     for (let i = ; i < Disc.split("<Ϩ>>").length; i++) {
+     for (let i = 0; i < Disc.split("<Ϩ>>").length; i++) {
       var DiscFile = Disc.split("<Ϩ>>")[i]
       localStorage.setItem(DiscFile.split("<<Ϩ>")[0], DiscFile.split("<<Ϩ>")[1])
      }
