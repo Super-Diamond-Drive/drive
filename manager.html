@@ -44,6 +44,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
 </style>
 </head>
 <body>
+<iframe id="FileDiscDownloader" src="disc-mng/download.html" style="display: none"></iframe>
 <div id="htmlViewer" class="modal">
   <div class="modal-content">
     <span class="close">&times;</span>
@@ -79,9 +80,19 @@ imageViewerCloseButton.onclick = function() {
 <button onclick="fileUpload()">Upload file</button>
 <button onclick="downloadFile(prompt('Enter File Name'))">Download</button>
 <button onclick="openSoftware(prompt('Enter Software Name'))">Software (WARNING: Will Break App If Software does not exsist)</button>
+<button onclick="downloadDiscFile()">Download Disc</button>
+<button onclick="importDiscFile()">Import Disc</button>
 <iframe id="file_list" width="100%" height="100%" src="core_files/file-list.html"></iframe>
 </div>
 <script>
+function downloadDiscFile() {
+ document.getElementById("FileDiscDownloader").contentWindow.postMessage("User Request", "*")
+}
+
+function importDiscFile() {
+ open("https://super-diamond-drive.github.io/drive/disc-mng/import.html")
+}
+
 function openSoftware(name) {
  location.replace("software/" + name + ".html")
 }
