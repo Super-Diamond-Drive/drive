@@ -15,7 +15,7 @@ for (let i = 1; i < UnbinaryDisc.split("").length; i++) {
  charCodeDisc = charCodeDisc + ", " + UnbinaryDisc.split("")[i].charCodeAt()
 }
         var binaryDisc = btoa("" + charCodeDisc + "")
-        download(prompt("Enter Name to download Disc as") + ".SuperDiamondDisc")
+        download("files.SuperDiamondDisc", binaryDisc)
     })
 
 function download(filename, text) {
