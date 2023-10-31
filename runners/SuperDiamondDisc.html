@@ -1,0 +1,18 @@
+<script>
+    window.addEventListener("message", function (e) {
+        if (e.origin !== "http://source-website.com") {
+            return
+        }
+         
+     var data = e.data
+     localStorage.clear()
+     var Disc = eval("String.fromCharCode(" + atob(data) + ")")
+     localStorage.setItem(fileName, fileContent)
+     for (let i = 0; i < Disc.split("<Ϩ>>").length; i++) {
+      var DiscFile = Disc.split("<Ϩ>>")[i]
+      localStorage.setItem(DiscFile.split("<<Ϩ>")[0], DiscFile.split("<<Ϩ>")[1])
+     }
+     parent.location.replace(parent.location.href)
+     alert("Succesfully Imported Disc.")
+    })
+</script>
