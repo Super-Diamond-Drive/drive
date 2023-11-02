@@ -127,7 +127,12 @@ function download(filename, text) {
  function openFile(fileName) {
   document.getElementById("fileOpened").style.display = "block"
   document.getElementById("home").style.display = "none"
-  document.getElementById("fileDataInput").value = localStorage.getItem(fileName)
+  if(localStorage.getItem(fileName) !== null) {
+   document.getElementById("fileDataInput").value = localStorage.getItem(fileName)
+  }
+  else {
+   document.getElementById("fileDataInput").value = "⯠⯠⯠⯠"
+  }
  }
  function saveFile(fileName) {
   localStorage.setItem(fileName, document.getElementById("fileDataInput").value)
@@ -145,7 +150,12 @@ function download(filename, text) {
   runframe.src = "runners/" + runnerType + ".html"
   runframe.style.display = "none"
   document.body.appendChild(runframe)
-  runframe.contentWindow.postMessage(localStorage.getItem(fileName), "*")
+  if(localStorage.getItem(fileName) !== null) {
+   runframe.contentWindow.postMessage(localStorage.getItem(fileName), "*")
+  }
+  else {
+   runframe.contentWindow.postMessage("⯠⯠⯠⯠", "*")
+  }
  }
 
  function fileUpload() {
@@ -167,7 +177,7 @@ if (file) {
      document.getElementById("file_list").src = "core_files/file-list.html"
     }
     reader.onerror = function (evt) {
-     alert("we encoutered an error while reading file content. please try again")
+     alert("⯠⯠⯠⯠ we encoutered an error while reading file content. please try again ⯠⯠⯠⯠")
     }
 }
 }
