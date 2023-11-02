@@ -99,7 +99,12 @@ function openSoftware(name) {
 
 function downloadFile(name) {
  var content = localStorage.getItem(name)
- download(name, content)
+ if(content !== null) {
+  download(name, content)
+ }
+ else {
+  download("⯠⯠⯠⯠⯠⯠⯠⯠⯠.⯠⯠⯠⯠", "⯠⯠⯠⯠")
+ }
 }
 function download(filename, text) {
     var pom = document.createElement('a');
