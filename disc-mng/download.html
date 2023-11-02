@@ -8,7 +8,7 @@
         }
         var UnbinaryDisc = localStorage.key(0) + "<<Ϩ>" + localStorage[0]
 for (let i = 1; i < localStorage.length; i++) {
- UnbinaryDisc = UnbinaryDisc + "<Ϩ>>" + localStorage.key(i) + "<<Ϩ>" + localStorage[i]
+ UnbinaryDisc = UnbinaryDisc + "<Ϩ>>" + localStorage.key(i) + "<<Ϩ>" + localStorage.getItem(localStorage.key(i))
 }
         var charCodeDisc = UnbinaryDisc.split("")[0].charCodeAt()
 for (let i = 1; i < UnbinaryDisc.split("").length; i++) {
