@@ -10,9 +10,27 @@
 for (let i = 1; i < localStorage.length; i++) {
  UnbinaryDisc = UnbinaryDisc + "<Ϩ>>" + localStorage.key(i) + "<<Ϩ>" + localStorage.getItem(localStorage.key(i))
 }
+
+switch (expr) {
+  case 'high':
+        var charCodeDiscArray = new TextEncoder().encode(UnbinrayDisc)
+        var charCodeDisc = charCodeDiscArray[0]
+for (let i = 1; i < charCodeDiscArray.length - 1; i++) {
+ charCodeDisc = charCodeDisc + ", " + charCodeDiscArray[i]
+} 
+
+   break;
+  case 'low':
         var charCodeDisc = UnbinaryDisc.split("")[0].charCodeAt()
 for (let i = 1; i < UnbinaryDisc.split("").length; i++) {
  charCodeDisc = charCodeDisc + ", " + UnbinaryDisc.split("")[i].charCodeAt()
+}
+    break;
+  default:
+           var charCodeDisc = UnbinaryDisc.split("")[0].charCodeAt()
+for (let i = 1; i < UnbinaryDisc.split("").length; i++) {
+ charCodeDisc = charCodeDisc + ", " + UnbinaryDisc.split("")[i].charCodeAt()
+}
 }
         var binaryDisc = btoa("" + charCodeDisc + "")
         download("files.SuperDiamondDisc", binaryDisc)
