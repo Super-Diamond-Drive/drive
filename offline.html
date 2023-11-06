@@ -4,6 +4,26 @@
 </head>
 <body>
  <center><h1>You are not connected to the internet</h1></center>
- <center><p>We are thinking about a game you can play here</p></center>
+ <center><p>you must be connected to the internet to access the online dashboard</p></center>
+ <script>
+  window.addEventListener('online', () => {
+        window.location.reload();
+      });
+
+      async function checkNetworkAndReload() {
+        try {
+          const response = await fetch('.');
+          if (response.status >= 200 && response.status < 500) {
+            window.location.reload();
+            return;
+          }
+        } catch {
+          // Unable to connect to the server, ignore.
+        }
+        window.setTimeout(checkNetworkAndReload, 2500);
+      }
+
+      checkNetworkAndReload();
+   </script>
 </body>
 </html>
