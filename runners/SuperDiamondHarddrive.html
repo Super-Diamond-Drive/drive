@@ -1,0 +1,10 @@
+<script>
+    window.addEventListener("message", function (e) {
+        if (e.origin !== "http://source-website.com") {
+            return
+        }
+        var harddriveInfo = e.data
+        localStorage.setItem("harddriveInfo", harddriveInfo)
+        alert("Sucesfully Set Hardrive")
+    })
+</script>
