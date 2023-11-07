@@ -1,5 +1,24 @@
+<p><a href="manager.html">Back</a></p>
 <iframe src="disc-mng/download.html" id
 ="downloadDisc" style="display
 : none"></iframe>
 <p><button onclick="document.getElementByI('downloadDisc').contentWindow.postMessage('User Request', '*')">Download Disc</button></p>
 <iframe src="disc-mng/import.html"></iframe>
+<p><input type="file" id="harddriveUpload"></input> <button onclick="importHarddrive()">Import Harddrive</button></p>
+<script>
+function importHarddrive() {
+var file = document.getElementById("harddriveUpload").files[0];
+var fileContent = "reading..."
+if (file) {
+    var reader = new FileReader();
+    reader.readAsText(file, "UTF-8");
+    reader.onload = function (evt) {
+     fileContent = evt.target.result;
+     localStorage.setItem("harddriveInfo", fileContent)
+    }
+    reader.onerror = function (evt) {
+     alert("⯠⯠⯠⯠ we encoutered an error while reading harddrive. please try again ⯠⯠⯠⯠")
+    }
+}
+}
+</script>
