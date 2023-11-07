@@ -1,6 +1,14 @@
+<html>
+<head></head>
+<body>
 <script>
     window.addEventListener("message", function (e) {
         if (e.origin !== "http://source-website.com") {
+            return
+        }
+        <script>
+    window.addEventListener("message", function (e) {
+        if (e.origin !== "https://super-diamond-drive.github.io") {
             return
         }
         var harddriveInfo = e.data
@@ -8,3 +16,7 @@
         alert("Sucesfully Set Hardrive")
     })
 </script>
+    })
+</script>
+</body>
+</html>
