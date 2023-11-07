@@ -1,0 +1,20 @@
+//handles Super Diamond Drive Requests. thats all needed for the harddrive. one harddrive per domain
+<html>
+<head></head>
+<body>
+<script>
+    window.addEventListener("message", function (e) {
+        if (e.origin !== "https://super-diamond-drive.github.io") {
+            return
+        }
+        var request = e.data
+        try {
+         return eval(request);
+        }
+        catch(err) {
+         return err;
+        }
+    })
+</script>
+</body>
+</html>
