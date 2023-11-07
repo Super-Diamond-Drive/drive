@@ -88,11 +88,16 @@ imageViewerCloseButton.onclick = function() {
 <button onclick="downloadFile(prompt('Enter File Name'))">Download</button>
 <button onclick="openSoftware(prompt('Enter Software Name'))">Software (WARNING: Will Break App If Software does not exsist)</button>
 <button onclick="settings()">Settings<button>
+<button onclick="harddriveManager()">Harddrive Manager<button>
 <iframe id="file_list" width="100%" height="100%" src="core_files/file-list.html"></iframe>
 </div>
 <script>
 function settings() {
  location.replace("settings.html")
+}
+
+function harddriveManager() {
+ location.replace("harddrive-manager.html")
 }
 
 function openSoftware(name) {
