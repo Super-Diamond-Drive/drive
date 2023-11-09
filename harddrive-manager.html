@@ -91,6 +91,19 @@ harddrive.requestElement = document.createElement("iframe")
 harddrive.requestElement.src = harddrive.requestUrl
 harddrive.requestElement.style.display = "none"
 document.body.appendChild(harddrive.requestElement)
+
+console.group("Harddrive")
+const hardriveInfoTables = [{
+ name: harddrive.name(),
+ request_url: harddrive.requestUrl()
+},
+{
+ request_element: harddrive.requestElement
+}
+]
+console.table(harddriveInfoTables[0])
+console.table(harddriveInfoTables[1])
+console.groupEnd()
 </script>
 <button onclick="back()">Back<button>
 <p><a onclick="Open('https://github.com/Super-Diamond-Drive/templates/tree/main')">Templates</a> <a onclick="Open('https://github.com/Super-Diamond-Drive/drive/tree/main/runners')">Runners</a></p>
