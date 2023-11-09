@@ -76,13 +76,13 @@ imageViewerCloseButton.onclick = function() {
 <script name="harddrive-loader">
 const harddrive = {
  reqeustUrl: function() { 
-  return eval("String.fromCharCode("atob(localStorage.getItem("harddriveInfo").split("<ϨinfoSplitϨ>")[0]) + ")");
+  return eval("String.fromCharCode(" + atob(localStorage.getItem("harddriveInfo")) + ")").split("<ϨinfoSplitϨ>")[0]
  },
  reqeust: function(data) { 
   return harddrive.requestElement.contentWindow.postMessage(data, "*");
  },
  name: function() { 
-  return eval("String.fromCharCode("atob(localStorage.getItem("harddriveInfo").split("<ϨinfoSplitϨ>")[1]) + ")");
+  return eval("String.fromCharCode(" + atob(localStorage.getItem("harddriveInfo")) + ")").split("<ϨinfoSplitϨ>")[1]
  }
 }
 
