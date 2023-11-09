@@ -92,6 +92,12 @@ imageViewerCloseButton.onclick = function() {
 <iframe id="file_list" width="100%" height="100%" src="core_files/file-list.html"></iframe>
 </div>
 <script>
+console.group("Disc")
+const discInfoTables = [localStorage]
+console.log("files:")
+console.table(discInfoTables[0])
+console.groupEnd()
+
 function settings() {
  location.replace("settings.html")
 }
