@@ -6,9 +6,9 @@
         if (e.origin !== "https://super-diamond-drive.github.io") {
             return
         }
-        var UnbinaryDisc = localStorage.key(0) + "<<Ϩ>" + localStorage[0]
+        var UnbinaryDisc = localStorage.key(0) + "<><<>><>" + localStorage[0]
 for (let i = 1; i < localStorage.length; i++) {
- UnbinaryDisc = UnbinaryDisc + "<Ϩ>>" + localStorage.key(i) + "<<Ϩ>" + localStorage.getItem(localStorage.key(i))
+ UnbinaryDisc = UnbinaryDisc + "<><><><>" + localStorage.key(i) + "<><<>><>" + localStorage.getItem(localStorage.key(i))
 }
 
 switch (expr) {
