@@ -4,7 +4,7 @@
             return
         }
         var discContent = e.data
-        var disc = atob(eval("String.fromCharCode(" + discContent + ")"))
+        var disc = eval("String.fromCharCode(" + discContent + ")")
         var array = disc.split("<><><><>")
 for (let i = 0; i < array.length; i++) {
  var name = array[i].split("<><<>><>")[0]
