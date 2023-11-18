@@ -1,17 +1,14 @@
 <script>
     window.addEventListener("message", function (e) {
-        if (parent.location.href !== "https://alexidians.github.io/Super-Diamond-OS/settings.html") {
-            return
-        }
-        if (e.origin !== "https://alexidians.github.io") {
+        if (parent.location.href !== "https://super-diamond-drive.github.io") {
             return
         }
         var discContent = e.data
-        var disc = eval("String.fromCharCode(" + discContent + ")")
-        var array = disc.split("<>")
+        var disc = atob(eval("String.fromCharCode(" + discContent + ")"))
+        var array = disc.split("<><><><>")
 for (let i = 0; i < array.length; i++) {
- var name = array[i].split("Ϩ")[0]
- var content = array[i].split("Ϩ")[1]
+ var name = array[i].split("<><<>><>")[0]
+ var content = array[i].split("<><<>><>")[1]
  localStorage.setItem(name, content)
 }
     })
