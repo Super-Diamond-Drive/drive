@@ -78,6 +78,13 @@ imageViewerCloseButton.onclick = function() {
   imageViewer.style.display = "none";
 }
 </script>
+<script>
+function ToBytes(fileName) {
+ var encoder = new TextEncoder()
+ var ByteArray = encoder.encode(fileName + "Ϩ" + localStorage.getItem(fileName))
+ return ByteArray.buffer;
+}
+</script>
 <div id="home">
 <center><h1>Welcome to The Super Diamond Drive Manager</h1></center>
 <p><a onclick="Open('https://github.com/Super-Diamond-Drive/templates/tree/main')">Templates</a> <a onclick="Open('https://github.com/Super-Diamond-Drive/drive/tree/main/runners')">Runners</a></p>
