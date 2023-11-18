@@ -70,6 +70,13 @@ var imageViewerCloseButton = document.getElementsByClassName("close")[1];
 imageViewerCloseButton.onclick = function() {
   imageViewer.style.display = "none";
 }
+</script>]
+<script>
+function ToBytes(fileName) {
+ var encoder = new TextEncoder()
+ var ByteArray = encoder.encode(fileName + "Ϩ" + harddrive.request("localStorage.getItem(" + fileName + ")"))
+ return ByteArray.buffer;
+}
 </script>
 <div id="home">
 <center><textarea id="hardDriveName" cols="999999999999999999999" lines="1" readonly></textarea></center>
