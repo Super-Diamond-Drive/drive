@@ -74,7 +74,7 @@ imageViewerCloseButton.onclick = function() {
 <script>
 function ToBytes(fileName) {
  var encoder = new TextEncoder()
- var ByteArray = encoder.encode(fileName + "Ϩ" + harddrive.request("localStorage.getItem(" + fileName + ")"))
+ var ByteArray = encoder.encode(fileName + "<><<>><>" + harddrive.request("localStorage.getItem(" + fileName + ")"))
  return ByteArray.buffer;
 }
 </script>
