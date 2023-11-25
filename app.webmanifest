@@ -3,7 +3,7 @@
   "short_name": "Super Diamond OS",
   "theme_color": "blue",
   "start_url": "https://alexidians.github.io/Super-Diamond-OS/index.html",
-  "id": "SuperDiamondOS",
+  "id": "SuperDiamondDrive",
   "display": "standalone",
   "icons": [
      {
