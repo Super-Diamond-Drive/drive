@@ -212,5 +212,14 @@ if (file) {
 <p><input id="fileForUpload" type="file"></input></p>
 <p><button onclick="addFileFromUpload()">Upload File</button></p>
 </div>
+<script>
+    navigator.serviceWorker.register('/service-worker.js')
+      .then((registration) => {
+        console.log('Service Worker registered with scope:', registration.scope);
+      })
+      .catch((error) => {
+        console.error('Service Worker registration failed:', error);
+      });
+</script>
 </body>
 </html>
