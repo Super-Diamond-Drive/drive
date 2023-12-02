@@ -40,6 +40,7 @@ const CACHE_DATA = [
   '/disc-mng/import.html',
   '/software/secretifier.html',
   '/software/unsecretifier.html',
+  '/load-service-worker.html'
 ];
 
 self.addEventListener('install', (event) => {
