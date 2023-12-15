@@ -1,0 +1,53 @@
+<html>
+<head>
+<title>Super Diamond Archive Maker</title>
+</head>
+<body>
+<center><h1>Super Diamond Archive Maker</h1></center>
+<p><button onclick="setContent()">Set Content</button> <button onclick="getContent()">Get Content</button></p>
+<div id="StructureView" contenteditable="true"></div>
+<p><button onclick="saveStructure()">Save</button> <button onclick="updateStructureView()">Undo</button></p>
+<p><button onclick="Download()">Download</button></p>
+<script>
+var Files = {}
+var structureViewElem = document.getElementById("StructureView")
+updateStructureView()
+function updateStructureView() {
+ structureViewElem.innerHTML = JSON.stringify(Files)
+}
+function setContent() {
+ eval("Files." + prompt("Enter File Name To Set Content Of") + " = " + prompt("Enter New File Content"))
+ updateStructureView()
+}
+function getContent() {
+ alert(eval("Files." + prompt("Enter File Name To Get Content Of")))
+}
+function saveStructure() {
+ Files = JSON.parse(structureViewElem.innerHTML)
+}
+function Download() {
+ Archive = JSON.stringify(Files)
+ var array = Archive.split("")
+ var secretArchive = array[0].charCodeAt()
+ for (let i = 1; i < array.length; i++) {
+  secretArchive = secretArchive + ", " + array[i].charCodeAt()
+ }
+ downloadFile("BuiltSuperDiamondArchive.SuperDiamondArchive", btoa(secretArchive))
+}
+function downloadFile(filename, text) {
+    var pom = document.createElement('a');
+    pom.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+    pom.setAttribute('download', filename);
+
+    if (document.createEvent) {
+        var event = document.createEvent('MouseEvents');
+        event.initEvent('click', true, true);
+        pom.dispatchEvent(event);
+    }
+    else {
+        pom.click();
+    }
+}
+</script>
+</body>
+</html>
