@@ -1,0 +1,12 @@
+<html>
+<head></head>
+<body>
+<script>
+    window.addEventListener("message", function (e) {
+        if (e.origin !== "https://super-diamond-drive.github.io") {
+            return
+        }
+        open("./SuperDiamondArchiveViewer.html?data=" + encodeURI(e.data))
+</script>
+</body>
+</html>
