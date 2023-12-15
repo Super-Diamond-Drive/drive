@@ -3,6 +3,21 @@
 <title>Super Diamond Archive Viewer</title>
 </head>
 <body>
-<center><h1>Coming Soon!</h1></center>
+<center><h1>Super Diamond Archive Viewer</h1></center>
+<div id="fileList"></div>
+<script>
+var params = new URL(document.location).searchParams;
+var encodedData = params.get("data");
+var Files = JSON.parse(eval("String.fromCharCode(" + atob(encodedData) + ")"))
+var fileList = document.getElementById("fileList")
+for (let i = 0; i < Object.keys(Files).length; i++) {
+ fileElem = document.createElement("div")
+ fileElem.innerHTML = "<p>" + Object.keys(Files)[i] + " <button filename='" + Object.keys(Files)[i] + "' onclick='saveas(this)'>Save As</button></p>"
+ fileList.appendChild(fileElem)
+}
+function saveas(fileElement) {
+ localStorage.setItem(fileElement.getAttribute("filename"), eval("Files." + fileElement.getAttribute("filename")))
+}
+</script>
 </body>
 </html>
