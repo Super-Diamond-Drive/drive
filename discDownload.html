@@ -20,20 +20,16 @@ function download(filename, text) {
         if (e.origin !== "https://alexidians.github.io") {
             return
         }
- var disc = ""
+ var disc = {}
  for (var i = 0; i < localStorage.length; i++) {
-  if(i == 0) {
-   disc = localStorage.key(i) + "Ϩ" + localStorage.getItem(localStorage.key(i))
-  }
-  else {
-   disc = "<>" + localStorage.key(i) + "Ϩ" + localStorage.getItem(localStorage.key(i))
-  }
+  eval("disc." + localStorage.key(i) + " = '" + localStorage.getItem(localStorage.key(i)) + "'")
  }
+ disc = JSON.stringify(disc)
   var array = disc.split("")
   var secretDisc = array[0].charCodeAt()
 for (let i = 1; i < array.length; i++) {
   secretDisc = secretDisc + ", " + array[i].charCodeAt()
 }
-download("SuperDiamondOSData.superDiamondDataDisc", secretDisc)
+download("SuperDiamondOSFiles.superDiamondFilesDisc", secretDisc)
     })
 </script>
