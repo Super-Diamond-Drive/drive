@@ -9,11 +9,10 @@
          
      var data = e.data
      localStorage.clear()
-     var Disc = eval("String.fromCharCode(" + atob(data) + ")")
+     var Disc = JSON.parse(eval("String.fromCharCode(" + atob(data) + ")"))
      localStorage.setItem(fileName, fileContent)
-     for (let i = 0; i < Disc.split("<Ϩ>>").length; i++) {
-      var DiscFile = Disc.split("<Ϩ>>")[i]
-      localStorage.setItem(DiscFile.split("<<Ϩ>")[0], DiscFile.split("<<Ϩ>")[1])
+     for (let i = 0; i < Object.keys(Disc).length; i++) {
+      localStorage.setItem(Object.keys(jsonArray)[i], eval("Disc." + Object.keys(jsonArray).length[i]))
      }
      parent.location.replace(parent.location.href)
      alert("Succesfully Imported Disc.")
