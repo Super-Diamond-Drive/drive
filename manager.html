@@ -218,7 +218,14 @@ function openSoftware(name) {
 }
 
 function downloadFile(name) {
- var content = getItem(name).content
+ var content = ""
+ getItem(name)
+    .then((result) => {
+       content = result.content
+    })
+    .catch((error) => {
+        console.error('Error:', error);
+    });
  if(content !== null) {
   download(name, content)
  }
@@ -248,7 +255,15 @@ function download(filename, text) {
  function openFile(fileName) {
   document.getElementById("fileOpened").style.display = "block"
   document.getElementById("home").style.display = "none"
-  if(localStorage.getItem(fileName).content !== null) {
+  var content = ""
+  getItem(name)
+    .then((result) => {
+       content = result.content
+    })
+    .catch((error) => {
+        console.error('Error:', error);
+    });
+  if(content !== null) {
    document.getElementById("fileDataInput").value = getItem(fileName).content
   }
   else {
@@ -271,7 +286,15 @@ function download(filename, text) {
   runframe.src = "runners/" + runnerType + ".html"
   runframe.style.display = "none"
   document.body.appendChild(runframe)
-  if(getItem(fileName).content !== null) {
+  var content = ""
+  getItem(name)
+    .then((result) => {
+       content = result.content
+    })
+    .catch((error) => {
+        console.error('Error:', error);
+    });
+  if(content !== null) {
    runframe.contentWindow.postMessage(getItem(fileName).content, "*")
   }
   else {
