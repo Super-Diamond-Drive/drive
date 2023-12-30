@@ -109,7 +109,7 @@ console.groupEnd()
             const databaseName = 'Super_Diamond_Drive';
             const tableName = 'files';
 
-            function openDatabase() {
+            window.openDatabase = function () {
                 return new Promise((resolve, reject) => {
                     const request = window.indexedDB.open(databaseName, 1);
 
@@ -128,10 +128,10 @@ console.groupEnd()
                         reject(event.target.error);
                     };
                 });
-            }
+            };
 
-            function setItem(name, content) {
-                return openDatabase().then((db) => {
+            window.setItem = function (name, content) {
+                return window.openDatabase().then((db) => {
                     return new Promise((resolve, reject) => {
                         const transaction = db.transaction([tableName], 'readwrite');
                         const objectStore = transaction.objectStore(tableName);
@@ -146,10 +146,10 @@ console.groupEnd()
                         };
                     });
                 });
-            }
+            };
 
-            function getItem(name) {
-                return openDatabase().then((db) => {
+            window.getItemByName = function (name) {
+                return window.openDatabase().then((db) => {
                     return new Promise((resolve, reject) => {
                         const transaction = db.transaction([tableName], 'readonly');
                         const objectStore = transaction.objectStore(tableName);
@@ -165,10 +165,10 @@ console.groupEnd()
                         };
                     });
                 });
-            }
+            };
 
-            function deleteItem(name) {
-                return openDatabase().then((db) => {
+            window.deleteItem = function (name) {
+                return window.openDatabase().then((db) => {
                     return new Promise((resolve, reject) => {
                         const transaction = db.transaction([tableName], 'readwrite');
                         const objectStore = transaction.objectStore(tableName);
@@ -183,10 +183,10 @@ console.groupEnd()
                         };
                     });
                 });
-            }
+            };
 
-            function getJSON() {
-                return openDatabase().then((db) => {
+            window.getJSON = function () {
+                return window.openDatabase().then((db) => {
                     return new Promise((resolve, reject) => {
                         const transaction = db.transaction([tableName], 'readonly');
                         const objectStore = transaction.objectStore(tableName);
@@ -202,7 +202,7 @@ console.groupEnd()
                         };
                     });
                 });
-            }
+            };
         });
   
 function settings() {
