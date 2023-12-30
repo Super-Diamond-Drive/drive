@@ -82,7 +82,7 @@ imageViewerCloseButton.onclick = function() {
 <script>
 function ToBytes(fileName) {
  var encoder = new TextEncoder()
- var ByteArray = encoder.encode(fileName + "<><<>><>" + localStorage.getItem(fileName))
+ var ByteArray = encoder.encode(fileName + "<><<>><>" + getItem(fileName).content)
  return ByteArray.buffer;
 }
 </script>
@@ -218,7 +218,7 @@ function openSoftware(name) {
 }
 
 function downloadFile(name) {
- var content = getItem(name)
+ var content = getItem(name).content
  if(content !== null) {
   download(name, content)
  }
@@ -248,8 +248,8 @@ function download(filename, text) {
  function openFile(fileName) {
   document.getElementById("fileOpened").style.display = "block"
   document.getElementById("home").style.display = "none"
-  if(localStorage.getItem(fileName) !== null) {
-   document.getElementById("fileDataInput").value = getItem(fileName)
+  if(localStorage.getItem(fileName).content !== null) {
+   document.getElementById("fileDataInput").value = getItem(fileName).content
   }
   else {
    document.getElementById("fileDataInput").value = "⯠⯠⯠⯠"
@@ -271,8 +271,8 @@ function download(filename, text) {
   runframe.src = "runners/" + runnerType + ".html"
   runframe.style.display = "none"
   document.body.appendChild(runframe)
-  if(getItem(fileName) !== null) {
-   runframe.contentWindow.postMessage(getItem(fileName), "*")
+  if(getItem(fileName).content !== null) {
+   runframe.contentWindow.postMessage(getItem(fileName).content, "*")
   }
   else {
    runframe.contentWindow.postMessage("⯠⯠⯠⯠", "*")
