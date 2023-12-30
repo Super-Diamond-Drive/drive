@@ -105,7 +105,106 @@ const discInfoTables = [localStorage]
 console.log("files:")
 console.table(discInfoTables[0])
 console.groupEnd()
+        document.addEventListener('DOMContentLoaded', () => {
+            const databaseName = 'Super_Diamond_Drive';
+            const tableName = 'files';
 
+            function openDatabase() {
+                return new Promise((resolve, reject) => {
+                    const request = window.indexedDB.open(databaseName, 1);
+
+                    request.onupgradeneeded = (event) => {
+                        const db = event.target.result;
+                        const objectStore = db.createObjectStore(tableName, { keyPath: 'name' });
+                        objectStore.createIndex('content', 'content', { unique: false });
+                    };
+
+                    request.onsuccess = (event) => {
+                        const db = event.target.result;
+                        resolve(db);
+                    };
+
+                    request.onerror = (event) => {
+                        reject(event.target.error);
+                    };
+                });
+            }
+
+            function setItem(name, content) {
+                return openDatabase().then((db) => {
+                    return new Promise((resolve, reject) => {
+                        const transaction = db.transaction([tableName], 'readwrite');
+                        const objectStore = transaction.objectStore(tableName);
+                        const request = objectStore.put({ name, content });
+
+                        request.onsuccess = () => {
+                            resolve();
+                        };
+
+                        request.onerror = (event) => {
+                            reject(event.target.error);
+                        };
+                    });
+                });
+            }
+
+            function getItem(name) {
+                return openDatabase().then((db) => {
+                    return new Promise((resolve, reject) => {
+                        const transaction = db.transaction([tableName], 'readonly');
+                        const objectStore = transaction.objectStore(tableName);
+                        const request = objectStore.get(name);
+
+                        request.onsuccess = (event) => {
+                            const result = event.target.result;
+                            resolve(result);
+                        };
+
+                        request.onerror = (event) => {
+                            reject(event.target.error);
+                        };
+                    });
+                });
+            }
+
+            function deleteItem(name) {
+                return openDatabase().then((db) => {
+                    return new Promise((resolve, reject) => {
+                        const transaction = db.transaction([tableName], 'readwrite');
+                        const objectStore = transaction.objectStore(tableName);
+                        const request = objectStore.delete(name);
+
+                        request.onsuccess = () => {
+                            resolve();
+                        };
+
+                        request.onerror = (event) => {
+                            reject(event.target.error);
+                        };
+                    });
+                });
+            }
+
+            function getJSON() {
+                return openDatabase().then((db) => {
+                    return new Promise((resolve, reject) => {
+                        const transaction = db.transaction([tableName], 'readonly');
+                        const objectStore = transaction.objectStore(tableName);
+                        const request = objectStore.getAll();
+
+                        request.onsuccess = (event) => {
+                            const result = event.target.result;
+                            resolve(result);
+                        };
+
+                        request.onerror = (event) => {
+                            reject(event.target.error);
+                        };
+                    });
+                });
+            }
+        });
+  
 function settings() {
  location.replace("settings.html")
 }
@@ -119,7 +218,7 @@ function openSoftware(name) {
 }
 
 function downloadFile(name) {
- var content = localStorage.getItem(name)
+ var content = getItem(name)
  if(content !== null) {
   download(name, content)
  }
@@ -150,21 +249,21 @@ function download(filename, text) {
   document.getElementById("fileOpened").style.display = "block"
   document.getElementById("home").style.display = "none"
   if(localStorage.getItem(fileName) !== null) {
-   document.getElementById("fileDataInput").value = localStorage.getItem(fileName)
+   document.getElementById("fileDataInput").value = getItem(fileName)
   }
   else {
    document.getElementById("fileDataInput").value = "⯠⯠⯠⯠"
   }
  }
  function saveFile(fileName) {
-  localStorage.setItem(fileName, document.getElementById("fileDataInput").value)
+  setItem(fileName, document.getElementById("fileDataInput").value)
   document.getElementById("fileOpened").style.display = "none"
   document.getElementById("home").style.display = "block"
   document.getElementById("file_list").src = "core_files/file-list.html"
  }
  function deleteFile(fileName) {
   if(confirm("are you sure you want to delete " + fileName + "?")) {
-   localStorage.removeItem(fileName)
+   deleteItem(fileName)
   }
  }
  function runFile(fileName, runnerType) {
@@ -172,8 +271,8 @@ function download(filename, text) {
   runframe.src = "runners/" + runnerType + ".html"
   runframe.style.display = "none"
   document.body.appendChild(runframe)
-  if(localStorage.getItem(fileName) !== null) {
-   runframe.contentWindow.postMessage(localStorage.getItem(fileName), "*")
+  if(getItem(fileName) !== null) {
+   runframe.contentWindow.postMessage(getItem(fileName), "*")
   }
   else {
    runframe.contentWindow.postMessage("⯠⯠⯠⯠", "*")
@@ -193,7 +292,7 @@ if (file) {
     reader.readAsText(file, "UTF-8");
     reader.onload = function (evt) {
      fileContent = evt.target.result;
-     localStorage.setItem(fileName, fileContent)
+     setItem(fileName, fileContent)
      document.getElementById("fileUpload").style.display = "none"
      document.getElementById("home").style.display = "block"
      document.getElementById("file_list").src = "core_files/file-list.html"
